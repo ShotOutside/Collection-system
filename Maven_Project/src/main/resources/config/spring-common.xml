@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:p="http://www.springframework.org/schema/p" 
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	   xmlns:context="http://www.springframework.org/schema/context" 
+	   xmlns:tx="http://www.springframework.org/schema/tx" 
+	   xsi:schemaLocation="  
+    http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+    http://www.springframework.org/schema/mvc  
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+    
+         <!--
+         0.让Spring框架的父容器只扫描M层和D层，不扫描C层
+           exclude-filter：排除
+                     type="annotation" ：注解
+                     expression="org.springframework.stereotype.Controller"：表示C层的注解
+       -->
+   	<context:component-scan base-package="com.rj.bd">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+    
+    
+     <!-- 1、配置数据库相关参数properties的属性：${url} -->
+    <context:property-placeholder location="classpath:jdbc.properties" />
+    <!-- 2、配置数据库连接池 -->
+    
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!-- 连接池4大组件 -->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shangpin?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="user" value="root"/>
+        <property name="password" value="root"/>
+        
+        <property name="initialPoolSize" value="10"/>
+        <!-- 最大连接数 （连接池中的连接数不能超过maxPoolSize最大连接数） 默认值：15-->
+        <property name="maxPoolSize" value="20"/>
+        <!--最小连接数  默认值：3  -->
+        <property name="minPoolSize" value="5"/>
+    </bean>
+    
+    
+       <!-- 2.spring框架整合Mybatis -->
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource"></property>
+    	<property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
+    </bean>
+    
+    
+    
+    <!--
+		3.通过mybatis整合Spring的包中的MapperScannerConfigure实现扫描某一路径下的绑定的接口
+                          和生成代理类
+		   PS :basePackage:指定sql映射文件(xxxMapper.xml)/绑定的接口所在的包（自动扫描）
+		       sqlSessionFactory：为绑定的接口生成代理类的
+-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <!-- 自动的去下面路径扫包，目的是加在sql映射文件(xxxMapper.xml)或者mybatis绑定的接口 -->
+		<property name="basePackage" value="com.rj.bd"></property>
+		<!-- mybtais绑定的接口其实是由mybatis自己去依靠JDK动态代理实现生产代理类，但是当前mybatis是被Spring整合了，
+		             所以将整合之后的结果也就是sqlSessionFactory这个bean注入过来，并使用它来实现给绑定的接口生成代理类 
+		-->
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>	
+    
+    
+    <!-- 4.事务处理 -->
+    
+    
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<property name="dataSource" ref="dataSource"></property>
+    </bean>
+    
+    
+    	<!-- 5. 使用声明式事务
+		 transaction-manager：引用上面定义的事务管理器
+	 -->
+	<tx:annotation-driven transaction-manager="txManager" />	
+		
+</beans>
+    
+    
+    
+    
+    
+    
+ 

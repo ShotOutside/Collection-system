@@ -22,12 +22,12 @@ public interface MemberMapper {
 	
 	
 	//添加
-	@Insert ("insert into member (m_id,m_name,m_sex,m_tel,g_id) values (#{c_id},#{c_name},#{m_sex},#{m_tel},#)")
+	@Insert ("insert into member (m_id,m_name,m_sex,m_tel,g_id) values (#{m_id},#{m_name},#{m_sex},#{m_tel},#{g_id})")
 	public void save(Member com);
 
 	
 	//修改
-	@Update("update member set c_name=#{c_name},c_money=#{c_money},c_remark=#{c_remark} where c_id=#{c_id}")
+	@Update("update member set m_name=#{m_name},m_sex=#{m_sex},m_tel=#{m_tel},g_id=#{g_id} where m_id=#{m_id}")
 	public Member update(String m_id);
 	
 	//删除

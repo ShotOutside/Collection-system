@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @desc   使用@ExceptionHandler注解实现异常处理的基类
- * @author WYH
+ * @author LGZ
  * @time   2019-05-09
  */
 public class BaseController {

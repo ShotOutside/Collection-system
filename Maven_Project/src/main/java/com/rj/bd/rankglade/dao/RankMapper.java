@@ -1,4 +1,4 @@
-package com.rj.bd.member.dao;
+package com.rj.bd.rankglade.dao;
 
 
 import java.util.List;
@@ -10,19 +10,20 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.rj.bd.member.entity.Member;
+import com.rj.bd.rankglade.entity.Rank;
 
-@Repository("memberMapper")
-public interface MemberMapper {
+@Repository("rankMapper")
+public interface RankMapper {
 	
 	
 	//查询
 	@Select ("select * from member ")
-	public List<Member> findAll();
+	public List<Rank> findAll();
 	
 	
 	
 	//添加
-	@Insert ("insert into member (m_id,m_name,m_sex,m_tel,g_id) values (#{c_id},#{c_name},#{m_sex},#{m_tel},#)")
+	@Insert ("insert into member (m_id,m_name,m_sex,m_tel,g_id) values (#{c_id},#{c_name},#{c_money},#{c_remark})")
 	public void save(Member com);
 
 	

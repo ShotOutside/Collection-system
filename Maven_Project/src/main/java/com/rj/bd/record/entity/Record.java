@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class Record {
 
-	public String cr_id;
+	public Integer cr_id;
 	public String cr_money;
 	public String u_id;
 	public String w_id;

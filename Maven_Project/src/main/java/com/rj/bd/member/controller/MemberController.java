@@ -1,6 +1,8 @@
 package com.rj.bd.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +24,7 @@ public class MemberController extends BaseController{
 	@Autowired
 	public IMemberService memberService;
 	
-	
+	private Map<String, Object> data;
 	
 	
 	
@@ -33,14 +35,39 @@ public class MemberController extends BaseController{
 		
 		System.out.println("query");
 		List<Member> list = memberService.findAll();
-		
-		
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "success");
 		return list;
 		
 		
-		
-		
 	}
+
+
+
+
+	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {
+		data.put("code", code);
+		data.put("msg", msg);
+		
+		return data;
+	}
+
+
+
+
+	public Map<String, Object> getData() {
+		return data;
+	}
+
+
+
+
+	public void setData(Map<String, Object> data) {
+		this.data = data;
+	}
+	
+	
+	
 	
 	
 

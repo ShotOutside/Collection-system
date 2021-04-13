@@ -11,9 +11,15 @@ public interface IMemberService {
 	
 	List<Map<String, Object>> findByName(Member member);
 	
+	Map<String, Object> findById(String m_id);
+	
 	public void save(Member member);
 	
 	public void delete(String m_id);
+	
+	public void update(Member member);
+	
+	
 	
 	
 

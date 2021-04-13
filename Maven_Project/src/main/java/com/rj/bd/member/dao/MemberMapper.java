@@ -30,10 +30,13 @@ public interface MemberMapper {
 	public List<Map<String, Object>> findAll();
 	
 	
-	//条件查询
+	//条件查询(姓名)
 	@Select("SELECT * FROM member,rankglade WHERE member.g_id=rankglade.g_id AND member.m_name = #{m_name}")
 	public List<Map<String, Object>> findByName( Member member);
 	
+	//条件查询(id)
+	@Select("SELECT * FROM member,rankglade WHERE member.g_id=rankglade.g_id AND member.m_id = #{m_id}")
+	public Map<String, Object>  findById(String m_id);
 	
 	
 	//添加
@@ -43,7 +46,7 @@ public interface MemberMapper {
 	
 	//修改
 	@Update("update member set m_name=#{m_name},m_sex=#{m_sex},m_tel=#{m_tel},g_id=#{g_id} where m_id=#{m_id}")
-	public Member update(String m_id);
+	public Member update(Member member);
 	
 	//删除
 	@Delete("delete from member where m_id=#{m_id}")

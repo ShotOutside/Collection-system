@@ -31,6 +31,14 @@ public class MemberServiceImpl implements IMemberService {
 		memberMapper.delete(m_id);
 	}
 
+	public Map<String, Object> findById(String m_id) {
+		return memberMapper.findById(m_id);
+	}
+
+	public void update(Member member) {
+		memberMapper.update(member);
+	}
+
 
 
 }

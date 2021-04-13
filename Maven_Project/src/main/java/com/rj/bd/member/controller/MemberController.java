@@ -68,7 +68,7 @@ public class MemberController extends BaseController{
 	
 	@ResponseBody
 	@RequestMapping("/queryByName")
-	public List<Map<String, Object>> queryById(HttpServletRequest request,HttpServletResponse response){
+	public List<Map<String, Object>> queryByName(HttpServletRequest request,HttpServletResponse response){
 		
 		System.out.println("queryByName");
 		Member member=new Member();
@@ -91,6 +91,44 @@ public class MemberController extends BaseController{
 		memberService.delete(member.getM_id());
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/queryById")
+	public Map<String, Object> queryById(HttpServletRequest request,HttpServletResponse response){
+		System.out.println("queryById");
+		
+		String m_id=request.getParameter("m_id");
+		System.out.println("m_id:"+m_id);
+		Map<String, Object> map=memberService.findById(m_id);
+		System.out.println("map:"+map);
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "success");
+		
+		
+		
+		return map;
+		
+	}
+	
+	
+	
+	@ResponseBody
+	@RequestMapping("/update")
+	public void update(HttpServletRequest request,HttpServletResponse response){
+		//System.out.println("update");
+		Member member=new Member();
+		member.setM_id(request.getParameter("m_id"));
+		member.setM_name(request.getParameter("m_name"));
+		member.setM_sex(request.getParameter("m_sex"));
+		member.setM_tel(request.getParameter("m_tel"));
+		member.setG_id(request.getParameter("g_id"));
+		//System.out.println(member);
+		memberService.update(member);
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "success");
+		
 	}
 	
 	

@@ -14,7 +14,7 @@
 	<mapper class="com.rj.bd.rankglade.dao.RankMapper"/>
 	<mapper class="com.rj.bd.user.dao.UserMapper"/>
 	<mapper class="com.rj.bd.root.dao.RootMapper"/>
-	<!--<mapper class="com.rj.bd.way"/> -->
+	<mapper class="com.rj.bd.record.dao.RecordMapper"/>
 
 </mappers>
 

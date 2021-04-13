@@ -8,5 +8,6 @@
 </head>
 <body>
 			<a href="<%=request.getContextPath()%>/member/query.action">测试json</a>
+			<a href="<%=request.getContextPath()%>/record/queryByName.action">点击</a>
 </body>
 </html>

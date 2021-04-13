@@ -9,6 +9,7 @@ public class Root {
 	public String r_username;
 	public String r_password;
 	public String r_name;
+	public String token;
 	
 	
 }

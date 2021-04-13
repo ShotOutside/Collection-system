@@ -5,8 +5,6 @@ import lombok.Data;
 @Data
 public class User {
 
-	
-	
 	public String uId;
 	public String uName;
 	public String uTel;

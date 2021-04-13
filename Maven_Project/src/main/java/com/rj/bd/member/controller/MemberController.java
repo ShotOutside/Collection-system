@@ -74,7 +74,6 @@ public class MemberController extends BaseController{
 		Member member=new Member();
 		member.setM_name(request.getParameter("m_name"));
 		List<Map<String, Object>> list=memberService.findByName(member);
-		System.out.println(list);
 		for (Map<String, Object> map : list) {
 			System.out.println(map);
 		}

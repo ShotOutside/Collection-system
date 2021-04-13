@@ -53,10 +53,13 @@ public class RecordController extends BaseController{
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
 		return list;
-		
-		
+
 		
 	}
+	
+	@RequestMapping("/add")
+	@ResponseBody
+	
 	
 	
 

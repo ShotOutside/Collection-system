@@ -19,6 +19,10 @@ public class MemberServiceImpl implements IMemberService {
 		return memberMapper.findAll();
 	}
 
+	public void save(Member member) {
+		memberMapper.save(member);
+	}
+
 
 
 }

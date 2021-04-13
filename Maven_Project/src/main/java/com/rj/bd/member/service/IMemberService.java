@@ -8,5 +8,7 @@ import com.rj.bd.member.entity.Member;
 public interface IMemberService {
 
 	List<Map<String, Object>> findAll();
+	
+	public void save(Member member);
 
 }

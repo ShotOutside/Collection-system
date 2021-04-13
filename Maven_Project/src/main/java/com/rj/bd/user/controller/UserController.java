@@ -1,6 +1,8 @@
 package com.rj.bd.user.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,19 +23,32 @@ public class UserController extends BaseController {
 
 	@Autowired
 	public IUserService userService;
+	private Map<String, Object> data;
 	
 	@RequestMapping("/query")
 	@ResponseBody
 	public List<User> query(HttpServletRequest request ,HttpServletResponse response){
 		System.out.println("query");
 		List<User> list = userService.findAll();
-		for (User user : list) {
-			System.out.println(list);
-		}
-		
-		
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "success");
 		return list;
 		
+	}
+
+	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {
+		data.put("code", code);
+		data.put("msg", msg);
+		
+		return data;
+	}
+
+	public Map<String, Object> getData() {
+		return data;
+	}
+
+	public void setData(Map<String, Object> data) {
+		this.data = data;
 	}
 	
 	

@@ -20,6 +20,12 @@ public class UserServiceImpl implements IUserService {
 		return userMapper.findAll();
 	}
 
+
+	public void save(User user) {
+
+		userMapper.save(user);
+	}
+
 	
 
 

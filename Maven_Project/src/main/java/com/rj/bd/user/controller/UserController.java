@@ -19,7 +19,7 @@ import com.rj.bd.user.service.IUserService;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends BaseController {
+public class UserController {
 
 	@Autowired
 	public IUserService userService;
@@ -44,19 +44,20 @@ public class UserController extends BaseController {
 	@RequestMapping("/add")
 	@ResponseBody
 	public Map<String , Object> save(HttpServletRequest request ,HttpServletResponse response){
-		User user = new User();
-		user.getU_id();
-		user.getU_name();
-		user.getU_Sex();
-		user.getU_tel();
 		
+		User user = new User();
+		user.setU_id(request.getParameter("u_id"));
+		user.setU_name(request.getParameter("u_name"));
+		user.setU_sex(request.getParameter("u_sex"));
+		user.setU_tel(request.getParameter("u_tel"));
+		System.out.println(user);
 		userService.save(user);
 		
 		Map<String, Object> data1 = new HashMap<String, Object>();
 		data1.put("src", "");
 		data.put("data", data1);
 		this.data = print(data, "0", "success");
-		return data1;
+		return null;
 		
 	}
 
@@ -94,7 +95,8 @@ public class UserController extends BaseController {
 	public void setU_sex(String u_sex) {
 		this.u_sex = u_sex;
 	}
-	
+
+
 	
 	
 }

@@ -23,4 +23,7 @@ public interface UserMapper {
 	//添加
 	@Insert("insert into user (u_id,u_name,u_tel,u_sex) values(#{u_id},#{u_name},#{u_tel},#{u_sex})")
 	public void save(User user);
+	
+	
+	
 }

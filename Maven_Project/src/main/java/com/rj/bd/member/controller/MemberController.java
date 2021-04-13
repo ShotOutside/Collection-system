@@ -41,9 +41,9 @@ public class MemberController extends BaseController{
 		
 		System.out.println("query");
 		List<Map<String, Object>> list = memberService.findAll();
-		for (Map<String, Object> map : list) {
-			System.out.println(map);
-		}
+//		for (Map<String, Object> map : list) {
+//			System.out.println(map);
+//		}
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
 		return list;
@@ -64,6 +64,26 @@ public class MemberController extends BaseController{
 		this.data = print(data, "0", "success");
 		
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/queryByName")
+	public List<Map<String, Object>> queryById(HttpServletRequest request,HttpServletResponse response){
+		
+		System.out.println("queryByName");
+		Member member=new Member();
+		member.setM_name(request.getParameter("m_name"));
+		List<Map<String, Object>> list=memberService.findByName(member);
+		System.out.println(list);
+		for (Map<String, Object> map : list) {
+			System.out.println(map);
+		}
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "success");
+		return list;
+		
+	}
+	
 
 
 

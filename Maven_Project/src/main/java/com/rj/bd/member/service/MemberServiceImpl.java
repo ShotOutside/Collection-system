@@ -23,6 +23,10 @@ public class MemberServiceImpl implements IMemberService {
 		memberMapper.save(member);
 	}
 
+	public List<Map<String, Object>> findByName(Member member ) {
+		return memberMapper.findByName(member);
+	}
+
 
 
 }

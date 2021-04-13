@@ -9,6 +9,10 @@ public interface IMemberService {
 
 	List<Map<String, Object>> findAll();
 	
+	List<Map<String, Object>> findByName(Member member);
+	
 	public void save(Member member);
+	
+	
 
 }

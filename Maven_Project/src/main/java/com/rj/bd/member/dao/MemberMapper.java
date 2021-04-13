@@ -30,6 +30,11 @@ public interface MemberMapper {
 	public List<Map<String, Object>> findAll();
 	
 	
+	//条件查询
+	@Select("SELECT * FROM member,rankglade WHERE member.g_id=rankglade.g_id AND member.m_name = #{m_name}")
+	public List<Map<String, Object>> findByName( Member member);
+	
+	
 	
 	//添加
 	@Insert ("insert into member (m_id,m_name,m_sex,m_tel,g_id) values (#{m_id},#{m_name},#{m_sex},#{m_tel},#{g_id})")

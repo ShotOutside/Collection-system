@@ -26,6 +26,12 @@ public class UserServiceImpl implements IUserService {
 		userMapper.save(user);
 	}
 
+
+	public void delete(String uId) {
+
+		userMapper.delete(uId);
+	}
+
 	
 
 

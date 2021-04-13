@@ -2,6 +2,7 @@ package com.rj.bd.user.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -21,9 +22,13 @@ public interface UserMapper {
 	
 	
 	//添加
-	@Insert("insert into user (u_id,u_name,u_tel,u_sex) values(#{u_id},#{u_name},#{u_tel},#{u_sex})")
+	@Insert("insert into user (uId,uName,uTel,uSex) values(#{uId},#{uName},#{uTel},#{uSex})")
 	public void save(User user);
 	
 	
+	
+	//删除
+	@Delete("delete from user where uId=#{uId}")
+	public void delete(String uId);
 	
 }

@@ -12,4 +12,6 @@ public interface IUserService {
 
 	void save(User user);
 
+	void delete(String uId);
+
 }

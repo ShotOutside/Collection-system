@@ -24,10 +24,10 @@ public class UserController {
 	@Autowired
 	public IUserService userService;
 	private Map<String, Object> data;
-	private String u_id;
-	private String u_name;
-	private String u_tel;
-	private String u_sex;
+	private String uId;
+	private String uName;
+	private String uTel;
+	private String uSex;
 	
 	@RequestMapping("/query")
 	@ResponseBody
@@ -46,10 +46,10 @@ public class UserController {
 	public Map<String , Object> save(HttpServletRequest request ,HttpServletResponse response){
 		
 		User user = new User();
-		user.setU_id(request.getParameter("u_id"));
-		user.setU_name(request.getParameter("u_name"));
-		user.setU_sex(request.getParameter("u_sex"));
-		user.setU_tel(request.getParameter("u_tel"));
+		user.setUId(request.getParameter("uId"));
+		user.setUName(request.getParameter("uName"));
+		user.setUTel(request.getParameter("uTel"));
+		user.setUSex(request.getParameter("uSex"));
 		System.out.println(user);
 		userService.save(user);
 		
@@ -59,6 +59,19 @@ public class UserController {
 		this.data = print(data, "0", "success");
 		return null;
 		
+	}
+	
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public String delete(String uId){
+		Map<String, Object> data = new HashMap<String, Object>();
+		System.out.println("delete");
+		System.out.println("uId" +":"+ uId);
+		userService.delete(uId);
+		this.data = print(data, "0", "success");
+		
+		return null;
 	}
 
 	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {
@@ -77,24 +90,26 @@ public class UserController {
 	}
 
 
-	public void setU_id(String u_id) {
-		this.u_id = u_id;
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
 
 
-	public void setU_name(String u_name) {
-		this.u_name = u_name;
+	public void setuName(String uName) {
+		this.uName = uName;
 	}
 
 
-	public void setU_tel(String u_tel) {
-		this.u_tel = u_tel;
+	public void setuTel(String uTel) {
+		this.uTel = uTel;
 	}
 
 
-	public void setU_sex(String u_sex) {
-		this.u_sex = u_sex;
+	public void setuSex(String uSex) {
+		this.uSex = uSex;
 	}
+
+
 
 
 	

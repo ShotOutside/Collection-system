@@ -17,6 +17,11 @@ import com.rj.bd.member.entity.Member;
 import com.rj.bd.member.service.IMemberService;
 
 
+/**
+ * member模块的控制器
+ * @author LGZ
+ *
+ */
 @Controller
 @RequestMapping("/member")
 public class MemberController extends BaseController{
@@ -31,11 +36,13 @@ public class MemberController extends BaseController{
 	
 	@RequestMapping("/query")
 	@ResponseBody
-	public List<Member> query(HttpServletRequest request,HttpServletResponse response){
+	public List<Map<String, Object>> query(HttpServletRequest request,HttpServletResponse response){
 		
 		System.out.println("query");
-		List<Member> list = memberService.findAll();
-		
+		List<Map<String, Object>> list = memberService.findAll();
+		for (Map<String, Object> map : list) {
+			System.out.println(map);
+		}
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
 		return list;

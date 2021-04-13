@@ -1,6 +1,7 @@
 package com.rj.bd.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class MemberServiceImpl implements IMemberService {
 	@Autowired
 	public MemberMapper memberMapper;
 
-	public List<Member> findAll() {
+	public List<Map<String, Object>> findAll() {
 		return memberMapper.findAll();
 	}
 

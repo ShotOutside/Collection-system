@@ -12,6 +12,7 @@ public class Member {
 	public String m_tel;
 	public String g_id;
 	
+	
 
 	
 

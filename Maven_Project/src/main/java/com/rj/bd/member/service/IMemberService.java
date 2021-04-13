@@ -13,6 +13,8 @@ public interface IMemberService {
 	
 	public void save(Member member);
 	
+	public void delete(String m_id);
+	
 	
 
 }

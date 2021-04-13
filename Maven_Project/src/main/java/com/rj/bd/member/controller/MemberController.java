@@ -83,6 +83,18 @@ public class MemberController extends BaseController{
 		
 	}
 	
+	@RequestMapping("/delete")
+	public void delete(HttpServletRequest request,HttpServletResponse response){
+		System.out.println("delete");
+		Member member=new Member();
+		member.setM_id(request.getParameter("m_id"));
+		memberService.delete(member.getM_id());
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "success");
+	}
+	
+	
+	
 
 
 

@@ -27,6 +27,10 @@ public class MemberServiceImpl implements IMemberService {
 		return memberMapper.findByName(member);
 	}
 
+	public void delete(String m_id) {
+		memberMapper.delete(m_id);
+	}
+
 
 
 }

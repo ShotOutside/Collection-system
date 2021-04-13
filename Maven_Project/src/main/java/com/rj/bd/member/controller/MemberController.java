@@ -35,6 +35,7 @@ public class MemberController extends BaseController{
 		
 		System.out.println("query");
 		List<Member> list = memberService.findAll();
+		
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
 		return list;

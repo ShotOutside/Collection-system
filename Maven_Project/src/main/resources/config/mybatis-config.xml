@@ -12,8 +12,8 @@
 	<mapper class="com.rj.bd.member.dao.MemberMapper"/>
 	<mapper class="com.rj.bd.log.dao.LogMapper"/>
 	<mapper class="com.rj.bd.rankglade.dao.RankMapper"/>
-		<!--<mapper class="com.rj.bd.root"/>
-	<mapper class="com.rj.bd.user"/>
+	<mapper class="com.rj.bd.user.dao.UserMapper"/>
+	<!--<mapper class="com.rj.bd.user"/>
 	<mapper class="com.rj.bd.way"/> -->
 
 </mappers>

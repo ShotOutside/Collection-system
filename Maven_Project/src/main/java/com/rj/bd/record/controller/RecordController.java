@@ -1,5 +1,6 @@
 package com.rj.bd.record.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,12 @@ public class RecordController extends BaseController{
 	@Autowired
 	public IRecordService recordService;
 	private Map<String, Object> data;
+	private String cr_id;
+	private String uName;
+	private Integer cr_money;
+	private String w_name;
+	private Date cr_time; 
+	
 	
 	
 	
@@ -59,6 +66,19 @@ public class RecordController extends BaseController{
 	
 	@RequestMapping("/add")
 	@ResponseBody
+	public Map<String , Object> save(HttpServletRequest request ,HttpServletResponse response){
+		Record record = new Record();
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
+		
+	}
 	
 	
 	

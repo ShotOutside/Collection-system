@@ -111,6 +111,16 @@ public class RecordController{
 		return this.data;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/exportExcel")
+	public Map<String, Object> exportExcel(HttpServletRequest request ,HttpServletResponse response){
+		System.out.println("exportExcel");
+		String cr_id=request.getParameter("cr_id");
+		System.out.println("cr_id:"+cr_id);
+		
+		return data;
+	}
+	
 	
 	
 	

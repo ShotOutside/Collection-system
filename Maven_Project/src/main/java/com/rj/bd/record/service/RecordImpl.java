@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rj.bd.record.dao.RecordMapper;
+import com.rj.bd.record.entity.Record;
 import com.rj.bd.user.entity.User;
 
 @Service("recordService")
@@ -23,7 +24,7 @@ public class RecordImpl implements IRecordService {
 		return recordMapper.find();
 	}
 
-	public List<User> queryByuName(String uName) {
+	public String queryByuName(String uName) {
 
 		return recordMapper.queryByuName(uName);
 		
@@ -32,6 +33,11 @@ public class RecordImpl implements IRecordService {
 	public void delete(String cr_id) {
 
 		recordMapper.delete(cr_id);
+	}
+
+	public void save(Record record) {
+		recordMapper.save(record);
+		
 	}
 
 

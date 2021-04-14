@@ -15,9 +15,10 @@ public class Record {
 	public Integer cr_money;
 	public Date cr_time;
 	public String cr_remark;
-	public User user;
-	public Way way;
 	
+
+	public String uId;
+	public String w_id;
 	
 	
 	

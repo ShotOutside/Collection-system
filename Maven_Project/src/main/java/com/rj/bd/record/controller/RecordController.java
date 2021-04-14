@@ -23,7 +23,7 @@ import com.rj.bd.way.entity.Way;
 
 @Controller
 @RequestMapping("/record")
-public class RecordController extends BaseController{
+public class RecordController{
 	
 	@Autowired
 	public IRecordService recordService;
@@ -31,8 +31,9 @@ public class RecordController extends BaseController{
 	private String  cr_id;
 	private String uName;
 	private Integer cr_money;
-	private String w_name;
+	private String w_id;
 	private Date cr_time; 
+	private String cr_remark;
 	
 	
 	
@@ -70,31 +71,36 @@ public class RecordController extends BaseController{
 	@RequestMapping("/add")
 	@ResponseBody
 	public Map<String , Object> save(HttpServletRequest request ,HttpServletResponse response) throws ParseException{
-		//SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
 		Record record = new Record();
-		/*record.setCr_id(request.getParameter("Cr_id"));
-		record.setCr_money(Integer.getInteger(request.getParameter("cr_money")));
-		record.setCr_time(sdf.parse(request.getParameter("cr_time")));*/
-		//record.setCr_id("0111");
-		//record.setCr_money(45);
+		record.setCr_id(request.getParameter("cr_id"));
+		record.setCr_money(Integer.parseInt(request.getParameter("cr_money")));
+		record.setCr_time(sdf.parse(request.getParameter("cr_time")));
+		record.setCr_remark(request.getParameter("cr_remark"));
+		System.out.println("add");
 		User user = new User();
-		//user.setUName(request.getParameter("uName"));
-		user.setUName("士大夫");
-		List<User> list =recordService.queryByuName(user.getUName());
-		System.out.println(list);
+		user.setUName(request.getParameter("uName"));
+		String u =user.getUName();
+		String string =recordService.queryByuName(u);
+		System.out.println(string);
+		record.setUId(string);
+
+		Way way = new Way();
+		record.setW_id(request.getParameter("w_id"));
 		
-		/*Way way = new Way();
-		way.setW_name(request.getParameter("w_name"));
-		record.setUser(user);
-		record.setWay(way);
-		System.out.println(record);*/
+		System.out.println(record);
+		recordService.save(record);
+		Map<String, Object> data1 = new HashMap<String, Object>();
+		data1.put("src", "");
+		data.put("data", data1);
+		this.data = print(data, "0", "success");
 		return null;
 		
 	}
 	
 	@RequestMapping("/delete")
 	@ResponseBody
-	public String delete(String cr_id){
+	public Map<String, Object> delete(String cr_id){
 		Map<String , Object> data = new HashMap<String, Object>();
 		System.out.println("delete");
 		System.out.println("cr_id" +":" + cr_id);
@@ -102,7 +108,7 @@ public class RecordController extends BaseController{
 		this.data = print(data, "0", "success");
 		
 		
-		return null;
+		return this.data;
 	}
 	
 	
@@ -135,8 +141,13 @@ public class RecordController extends BaseController{
 	}
 
 
-	public void setW_name(String w_name) {
-		this.w_name = w_name;
+
+
+
+
+
+	public void setW_id(String w_id) {
+		this.w_id = w_id;
 	}
 
 

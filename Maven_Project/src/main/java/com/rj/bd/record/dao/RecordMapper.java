@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
@@ -25,9 +26,9 @@ public interface RecordMapper {
 		public List<Map<String, Object>> findAll(User user);
 	
 		//添加
-		@Insert ("insert into record (cr_id,cr_money,u_id,w_id,cr_time,cr_remark) values (#{cr_id},#{cr_money},#{u_id},#{w_id},#{cr_time},#{cr_remark}")
+		@Insert ("insert into record (cr_id,cr_money,uId,w_id,cr_time,cr_remark) values (#{cr_id},#{cr_money},#{uId},#{w_id},#{cr_time},#{cr_remark})" )
 		public void save(Record record);
-
+		
 		
 		//修改
 		@Update("update record set cr_money=#{cr_money},u_id=#{u_id},w_id=#{w_id},cr_time=#{cr_time},cr_remark=#{cr_remark} where cr_id=#{cr_id}")
@@ -38,6 +39,6 @@ public interface RecordMapper {
 		public void delete(String cr_id);
 		
 		//查询一条user
-		@Select("select * from user where uName=#{uName}")
-		public List<User> queryByuName(String uName);
+		@Select("SELECT uId FROM USER WHERE uName=#{uName}")
+		public String queryByuName(String uName);
 }

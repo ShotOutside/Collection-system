@@ -23,6 +23,18 @@ public class RecordImpl implements IRecordService {
 		return recordMapper.find();
 	}
 
+	public void queryByuName(String uName) {
+
+		recordMapper.queryByuName(uName);
+	}
+
+	public void delete(String cr_id) {
+
+		recordMapper.delete(cr_id);
+	}
+
+
+
 
 
 	

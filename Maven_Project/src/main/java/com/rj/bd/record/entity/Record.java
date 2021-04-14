@@ -11,8 +11,8 @@ import lombok.Data;
 public class Record {
 
 	
-	public Integer cr_id;
-	public String cr_money;
+	public String  cr_id;
+	public Integer cr_money;
 	public Date cr_time;
 	public String cr_remark;
 	public User user;

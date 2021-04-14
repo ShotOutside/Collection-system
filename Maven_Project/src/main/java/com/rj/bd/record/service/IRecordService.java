@@ -11,6 +11,11 @@ public interface IRecordService {
 
 	List<Map<String, Object>> find();
 
+	void queryByuName(String uName);
+
+	void delete(String cr_id);
+
+
 
 
 }

@@ -35,5 +35,9 @@ public interface RecordMapper {
 		
 		//删除
 		@Delete("delete from record where cr_id=#{cr_id}")
-		public Record delete(String cr_id);
+		public void delete(String cr_id);
+		
+		//查询一条user
+		@Select("select * from user where uName=#{uName}")
+		public void queryByuName(String uName);
 }

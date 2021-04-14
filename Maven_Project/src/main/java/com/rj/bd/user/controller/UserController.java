@@ -64,14 +64,14 @@ public class UserController {
 	
 	@RequestMapping("/delete")
 	@ResponseBody
-	public String delete(String uId){
+	public Map<String, Object> delete(String uId){
 		Map<String, Object> data = new HashMap<String, Object>();
 		System.out.println("delete");
 		System.out.println("uId" +":"+ uId);
+		userService.deleterecord(uId);
 		userService.delete(uId);
 		this.data = print(data, "0", "success");
-		
-		return null;
+		return this.data;
 	}
 	
 	@ResponseBody
@@ -88,8 +88,9 @@ public class UserController {
 		return map;
 	}
 	
+	@ResponseBody
 	@RequestMapping("/update")
-	public void update(HttpServletRequest request ,HttpServletResponse response){
+	public Map<String, Object> update(HttpServletRequest request ,HttpServletResponse response){
 		System.out.println("update");
 		User user=new User();
 		user.setUId(request.getParameter("uId"));
@@ -101,6 +102,8 @@ public class UserController {
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "0");
 		System.out.println("this.data"+this.data);
+		
+		return this.data;
 	}
 
 	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {

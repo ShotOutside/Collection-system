@@ -43,6 +43,11 @@ public class UserServiceImpl implements IUserService {
 		userMapper.update(user);
 	}
 
+
+	public void deleterecord(String uId) {
+		userMapper.deleterecord(uId);
+	}
+
 	
 
 

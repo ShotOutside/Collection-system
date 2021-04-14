@@ -46,9 +46,9 @@ public interface MemberMapper {
 	
 	//修改
 	@Update("update member set m_name=#{m_name},m_sex=#{m_sex},m_tel=#{m_tel},g_id=#{g_id} where m_id=#{m_id}")
-	public Member update(Member member);
+	public void update(Member member);
 	
 	//删除
 	@Delete("delete from member where m_id=#{m_id}")
-	public Member delete(String m_id);
+	public void delete(String m_id);
 }

@@ -35,6 +35,11 @@ public interface UserMapper {
 	@Delete("delete from user where uId=#{uId}")
 	public void delete(String uId);
 	
+	//删除(级联删除)
+	@Delete("delete from record where uId=#{uId}")
+	public void deleterecord(String uId);
+	
+	
 	//修改
 	@Update("update user set uName=#{uName},uTel=#{uTel},uSex=#{uSex} where uId=#{uId}")
 	public void update(User user);

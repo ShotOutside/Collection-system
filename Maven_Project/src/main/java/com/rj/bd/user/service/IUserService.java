@@ -17,6 +17,8 @@ public interface IUserService {
 
 	void delete(String uId);
 	
+	void deleterecord(String uId);
+	
 	void update(User user);
 
 }

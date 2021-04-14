@@ -50,7 +50,7 @@ public class MemberController extends BaseController{
 	}
 	
 	@RequestMapping("/add")
-	public void add(HttpServletRequest request,HttpServletResponse response){
+	public Map<String, Object> add(HttpServletRequest request,HttpServletResponse response){
 		System.out.println("add");
 		Member member=new Member();
 		member.setM_id(UUID.randomUUID().toString());
@@ -62,7 +62,7 @@ public class MemberController extends BaseController{
 		memberService.save(member);
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
-		
+		return this.data;
 	}
 	
 	
@@ -83,14 +83,19 @@ public class MemberController extends BaseController{
 		
 	}
 	
+	
+	@ResponseBody
 	@RequestMapping("/delete")
-	public void delete(HttpServletRequest request,HttpServletResponse response){
+	public Map<String, Object> delete(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("delete");
-		Member member=new Member();
+
+		Member member = new Member();
 		member.setM_id(request.getParameter("m_id"));
 		memberService.delete(member.getM_id());
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
+
+		return this.data;
 	}
 	
 	
@@ -116,8 +121,8 @@ public class MemberController extends BaseController{
 	
 	@ResponseBody
 	@RequestMapping("/update")
-	public void update(HttpServletRequest request,HttpServletResponse response){
-		//System.out.println("update");
+	public Map<String, Object> update(HttpServletRequest request,HttpServletResponse response){
+		System.out.println("update");
 		Member member=new Member();
 		member.setM_id(request.getParameter("m_id"));
 		member.setM_name(request.getParameter("m_name"));
@@ -128,6 +133,7 @@ public class MemberController extends BaseController{
 		memberService.update(member);
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
+		return this.data;
 		
 	}
 	

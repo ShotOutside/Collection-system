@@ -32,7 +32,7 @@ public class RecordController{
 	private String uName;
 	private Integer cr_money;
 	private String w_id;
-	private Date cr_time; 
+	private String cr_time; 
 	private String cr_remark;
 	
 	
@@ -60,7 +60,7 @@ public class RecordController{
 	public List<Map<String, Object>> query(HttpServletRequest request,HttpServletResponse response){
 		System.out.println("query");
 		List<Map<String, Object>> list = recordService.find();
-		
+		System.out.println(list);
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
 		return list;
@@ -75,7 +75,7 @@ public class RecordController{
 		Record record = new Record();
 		record.setCr_id(request.getParameter("cr_id"));
 		record.setCr_money(Integer.parseInt(request.getParameter("cr_money")));
-		record.setCr_time(sdf.parse(request.getParameter("cr_time")));
+		record.setCr_time(request.getParameter("cr_time"));
 		record.setCr_remark(request.getParameter("cr_remark"));
 		System.out.println("add");
 		User user = new User();
@@ -151,7 +151,7 @@ public class RecordController{
 	}
 
 
-	public void setCr_time(Date cr_time) {
+	public void setCr_time(String cr_time) {
 		this.cr_time = cr_time;
 	}
 	

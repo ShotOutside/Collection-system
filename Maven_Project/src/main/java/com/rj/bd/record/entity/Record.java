@@ -13,7 +13,7 @@ public class Record {
 	
 	public String  cr_id;
 	public Integer cr_money;
-	public Date cr_time;
+	public String cr_time;
 	public String cr_remark;
 	
 

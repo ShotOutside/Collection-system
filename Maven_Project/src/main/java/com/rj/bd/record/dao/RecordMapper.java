@@ -39,5 +39,5 @@ public interface RecordMapper {
 		
 		//查询一条user
 		@Select("select * from user where uName=#{uName}")
-		public void queryByuName(String uName);
+		public List<User> queryByuName(String uName);
 }

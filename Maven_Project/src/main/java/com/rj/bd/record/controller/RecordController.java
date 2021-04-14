@@ -80,8 +80,9 @@ public class RecordController extends BaseController{
 		User user = new User();
 		//user.setUName(request.getParameter("uName"));
 		user.setUName("士大夫");
-		recordService.queryByuName(user.getUName());
-		System.out.println(user);
+		List<User> list =recordService.queryByuName(user.getUName());
+		System.out.println(list);
+		
 		/*Way way = new Way();
 		way.setW_name(request.getParameter("w_name"));
 		record.setUser(user);

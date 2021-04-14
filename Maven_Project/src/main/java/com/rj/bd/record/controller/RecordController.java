@@ -140,8 +140,8 @@ public class RecordController{
 		HSSFWorkbook workbook = new HSSFWorkbook();
 		String sheetname = "收款记录的详细信息";
 		HSSFSheet sheet = workbook.createSheet(sheetname);
-		String[] tableTop = {"收款记录编号", "金额", "员工", "支付方式", "收款时间", "备注"};
-		String[] columnName = {"cr_id", "cr_money", "uName", "w_name", "cr_time", "cr_remark"};
+		String[] tableTop = {"收款记录编号", "员工", "支付方式", "收款时间", "备注"};
+		String[] columnName = {"cr_id", "uName", "w_name", "cr_time", "cr_remark"};
 		HSSFRow row = sheet.createRow(0);
 		for (int i = 0; i < tableTop.length; i++) {
 			row.createCell(i).setCellValue(tableTop[i]);

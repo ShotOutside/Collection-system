@@ -1,6 +1,7 @@
 package com.rj.bd.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,16 @@ public class UserServiceImpl implements IUserService {
 	public void delete(String uId) {
 
 		userMapper.delete(uId);
+	}
+
+
+	public Map<String, Object> findById(String uId) {
+		return userMapper.findById(uId);
+	}
+
+
+	public void update(User user) {
+		userMapper.update(user);
 	}
 
 	

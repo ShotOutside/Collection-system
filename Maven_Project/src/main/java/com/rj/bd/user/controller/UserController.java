@@ -73,6 +73,35 @@ public class UserController {
 		
 		return null;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/queryById")
+	public Map<String, Object> queryById(HttpServletRequest request ,HttpServletResponse response){
+		
+		System.out.println("findById");
+		String uId=request.getParameter("uId");
+		System.out.println("uId:"+uId);
+		Map<String, Object> map=userService.findById(uId);
+		System.out.println("map:"+map);
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "success");
+		return map;
+	}
+	
+	@RequestMapping("/update")
+	public void update(HttpServletRequest request ,HttpServletResponse response){
+		System.out.println("update");
+		User user=new User();
+		user.setUId(request.getParameter("uId"));
+		user.setUName(request.getParameter("uName"));
+		user.setUSex(request.getParameter("uSex"));
+		user.setUTel(request.getParameter("uTel"));
+		System.out.println("user:"+user);
+		userService.update(user);
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "0");
+		System.out.println("this.data"+this.data);
+	}
 
 	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {
 		data.put("code", code);

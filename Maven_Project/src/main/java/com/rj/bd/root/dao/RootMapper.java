@@ -1,5 +1,7 @@
 package com.rj.bd.root.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +16,8 @@ public interface RootMapper {
 	public Root findRootByname(String r_username);
 
 	
-	
+	@Select("select * from root ")
+	public List<Root> findAll();
 	
 	
 }

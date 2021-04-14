@@ -10,6 +10,9 @@ public class Root {
 	public String r_password;
 	public String r_name;
 	public String token;
+	public String r_sex;
+	public String r_age;
+	public String r_remark;
 	
 	
 }

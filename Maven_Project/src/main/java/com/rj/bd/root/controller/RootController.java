@@ -1,7 +1,13 @@
 package com.rj.bd.root.controller;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +19,7 @@ import com.rj.bd.base.BaseController;
 import com.rj.bd.root.dao.RootMapper;
 import com.rj.bd.root.entity.Root;
 import com.rj.bd.root.service.IRootService;
+import com.rj.bd.user.entity.User;
 
 
 @Controller
@@ -21,6 +28,16 @@ public class RootController{
 
 	@Autowired
 	public IRootService rootService;
+	private Map<String, Object> data;
+	private File upload;
+	private String r_name;
+	private String r_password;
+	private String r_username;
+	private String r_sex;
+	private String r_age;
+	private String r_remark;
+	
+	
 
 	
 	
@@ -58,6 +75,47 @@ public class RootController{
 		
 		
 	}
+	
+	
+	@RequestMapping("/query")
+	@ResponseBody
+	public List<Root> query(HttpServletRequest request ,HttpServletResponse response){
+		
+		System.out.println("query");
+		List<Root> list = rootService.findAll();
+		data = new HashMap<String, Object>();
+		this.data = print(data, "0", "success");
+		return list;
+	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public String save(){
+		Map<String, Object> data = new HashMap<String, Object>();
+		if(r_username==null || r_password==null){
+			this.data =print(data, "-1","请输入账号密码");
+			return null;
+		}
+		if (upload==null) {
+			this.data =print(data, "-1", "失败");
+			return null;
+		}
+								//ServletActionContext.getServletContext();
+		
+		return null;
+		
+		
+	}
+	
+
+
+	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {
+		data.put("code", code);
+		data.put("msg", msg);
+		
+		return data;
+	}
+	
 		
 	
 }

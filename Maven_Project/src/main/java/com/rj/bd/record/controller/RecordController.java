@@ -18,9 +18,11 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.rj.bd.base.BaseController;
 import com.rj.bd.record.entity.Record;
 import com.rj.bd.record.service.IRecordService;
@@ -185,6 +187,39 @@ public class RecordController{
 	}
 	
 	
+	/**
+	 * @desc  分页
+	 * @param data
+	 * @param code
+	 * @param msg
+	 * @return
+	 */
+	
+	@RequestMapping("/all")
+	@ResponseBody
+	public Map<String, Object> queryAllRecord(Integer page,Integer size){
+		System.out.println(page);
+		System.out.println(size);
+		List<Record> list =recordService.queryAll(page,size);
+		PageInfo pageInfo =new PageInfo(list);
+		Map<String , Object> map = new HashMap<String, Object>();
+		map.put("code", "200");
+		map.put("msg", "请求成功");
+		map.put("data", pageInfo);
+		return map;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 	
 	
 	

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.rj.bd.record.dao.RecordMapper;
 import com.rj.bd.record.entity.Record;
 import com.rj.bd.user.entity.User;
@@ -42,6 +43,12 @@ public class RecordImpl implements IRecordService {
 
 	public List<Map<String, Object>> queryEcharts() {
 		return recordMapper.queryEcharts();
+	}
+
+	public List<Record> queryAll(Integer page, Integer size) {
+		PageHelper.startPage(page, size);
+		
+		return recordMapper.queryAll(page, size);
 	}
 
 

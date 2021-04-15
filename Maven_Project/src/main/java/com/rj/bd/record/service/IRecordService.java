@@ -20,7 +20,7 @@ public interface IRecordService {
 
 	List<Map<String, Object>> queryEcharts();
 
-	List<Record> queryAll(Integer page, Integer size);
+	List<Map<String,Object>> queryAll(Integer page, Integer size);
 
 
 

@@ -45,7 +45,7 @@ public class RecordImpl implements IRecordService {
 		return recordMapper.queryEcharts();
 	}
 
-	public List<Record> queryAll(Integer page, Integer size) {
+	public List<Map<String,Object>> queryAll(Integer page, Integer size) {
 		PageHelper.startPage(page, size);
 		
 		return recordMapper.queryAll(page, size);

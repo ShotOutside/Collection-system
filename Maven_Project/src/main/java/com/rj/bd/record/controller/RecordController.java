@@ -200,8 +200,9 @@ public class RecordController{
 	public Map<String, Object> queryAllRecord(Integer page,Integer size){
 		System.out.println(page);
 		System.out.println(size);
-		List<Record> list =recordService.queryAll(page,size);
+		List<Map<String,Object>> list =recordService.queryAll(page,size);
 		PageInfo pageInfo =new PageInfo(list);
+		System.out.println(list);
 		Map<String , Object> map = new HashMap<String, Object>();
 		map.put("code", "200");
 		map.put("msg", "请求成功");

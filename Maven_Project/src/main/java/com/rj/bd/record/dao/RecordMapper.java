@@ -48,5 +48,5 @@ public interface RecordMapper {
 		
 		//分页查询
 		@Select("SELECT * FROM record r,USER u,way w WHERE r.uId=u.uId AND r.w_id=w.w_id" )
-		List<Record> queryAll(Integer page, Integer size);
+		List<Map<String,Object>> queryAll(Integer page, Integer size);
 }

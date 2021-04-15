@@ -41,4 +41,8 @@ public interface RecordMapper {
 		//查询一条user
 		@Select("SELECT uId FROM USER WHERE uName=#{uName}")
 		public String queryByuName(String uName);
+		
+		//查询(echarts折线图)
+		@Select("SELECT re_date,(SUM(cr_money)) AS cr_money  FROM (SELECT DATE_FORMAT(cr_time,'%Y')AS re_date,cr_money FROM record) AS r GROUP BY r.re_date")
+		public List<Map<String, Object>> queryEcharts();
 }

@@ -40,6 +40,10 @@ public class RecordImpl implements IRecordService {
 		
 	}
 
+	public List<Map<String, Object>> queryEcharts() {
+		return recordMapper.queryEcharts();
+	}
+
 
 
 

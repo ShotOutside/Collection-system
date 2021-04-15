@@ -13,9 +13,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+//import org.apache.poi.hssf.usermodel.HSSFRow;
+//import org.apache.poi.hssf.usermodel.HSSFSheet;
+//import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -126,41 +126,56 @@ public class RecordController{
 	 * @return
 	 * @throws IOException
 	 */
+//	@ResponseBody
+//	@RequestMapping("/exportExcel")
+//	public Map<String, Object> exportExcel(HttpServletRequest request ,HttpServletResponse response) throws IOException{
+//		System.out.println("exportExcel");
+//		List<Map<String, Object>> list=recordService.find();
+//		for (Map<String, Object> map : list) {
+//			System.out.println(map);
+//		}
+//		String filename = "收款记录.xls";
+//		ExcelUtils excelUtils = new ExcelUtils();
+//		excelUtils.settings(request, response, filename);
+//		HSSFWorkbook workbook = new HSSFWorkbook();
+//		String sheetname = "收款记录的详细信息";
+//		HSSFSheet sheet = workbook.createSheet(sheetname);
+//		String[] tableTop = {"收款记录编号", "员工", "支付方式", "收款时间", "备注"};
+//		String[] columnName = {"cr_id", "uName", "w_name", "cr_time", "cr_remark"};
+//		HSSFRow row = sheet.createRow(0);
+//		for (int i = 0; i < tableTop.length; i++) {
+//			row.createCell(i).setCellValue(tableTop[i]);
+//		}
+//		for (int i = 0; i < list.size(); i++) {
+//			HSSFRow row02 = sheet.createRow(i + 1);
+//			sheet.autoSizeColumn(i, true);
+//			Map<String, Object> map = list.get(i);
+//			for (int k = 0; k < columnName.length; k++) {
+//				row02.createCell(k).setCellValue((String)map.get(columnName[k]));
+//			}
+//		}
+//		excelUtils.setColumnAutoAdapter(sheet, list.size());
+//		OutputStream outputStream = response.getOutputStream();
+//		workbook.write(outputStream);
+//		outputStream.close();
+//		return data;
+//	}
+	
 	@ResponseBody
-	@RequestMapping("/exportExcel")
-	public Map<String, Object> exportExcel(HttpServletRequest request ,HttpServletResponse response) throws IOException{
-		System.out.println("exportExcel");
-		List<Map<String, Object>> list=recordService.find();
+	@RequestMapping("/echarts")
+	public List<Map<String, Object>> echarts(HttpServletRequest request ,HttpServletResponse response){
+		
+		System.out.println("echarts");
+		List<Map<String, Object>> list=recordService.queryEcharts();
 		for (Map<String, Object> map : list) {
 			System.out.println(map);
 		}
-		String filename = "收款记录.xls";
-		ExcelUtils excelUtils = new ExcelUtils();
-		excelUtils.settings(request, response, filename);
-		HSSFWorkbook workbook = new HSSFWorkbook();
-		String sheetname = "收款记录的详细信息";
-		HSSFSheet sheet = workbook.createSheet(sheetname);
-		String[] tableTop = {"收款记录编号", "员工", "支付方式", "收款时间", "备注"};
-		String[] columnName = {"cr_id", "uName", "w_name", "cr_time", "cr_remark"};
-		HSSFRow row = sheet.createRow(0);
-		for (int i = 0; i < tableTop.length; i++) {
-			row.createCell(i).setCellValue(tableTop[i]);
-		}
-		for (int i = 0; i < list.size(); i++) {
-			HSSFRow row02 = sheet.createRow(i + 1);
-			sheet.autoSizeColumn(i, true);
-			Map<String, Object> map = list.get(i);
-			for (int k = 0; k < columnName.length; k++) {
-				row02.createCell(k).setCellValue((String)map.get(columnName[k]));
-			}
-		}
-		excelUtils.setColumnAutoAdapter(sheet, list.size());
-		OutputStream outputStream = response.getOutputStream();
-		workbook.write(outputStream);
-		outputStream.close();
-		return data;
+		
+		
+		
+		return list;
+		
 	}
-	
 	
 	
 	

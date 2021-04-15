@@ -18,6 +18,7 @@ public interface IRecordService {
 
 	void save(Record record);
 
+	List<Map<String, Object>> queryEcharts();
 
 
 

@@ -20,5 +20,7 @@ public interface IUserService {
 	void deleterecord(String uId);
 	
 	void update(User user);
+	
+	String queryImgById(String uId);
 
 }

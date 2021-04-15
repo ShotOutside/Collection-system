@@ -44,4 +44,8 @@ public interface UserMapper {
 	@Update("update user set uName=#{uName},uTel=#{uTel},uSex=#{uSex} where uId=#{uId}")
 	public void update(User user);
 	
+	//查询图片
+	@Select("select uImgs from user where uId=#{uId}")
+	public String queryImgById(String uId);
+	
 }

@@ -48,6 +48,11 @@ public class UserServiceImpl implements IUserService {
 		userMapper.deleterecord(uId);
 	}
 
+
+	public String queryImgById(String uId) {
+		return userMapper.queryImgById(uId);
+	}
+
 	
 
 

@@ -27,15 +27,16 @@ import com.rj.bd.root.entity.Root;
 import com.rj.bd.root.service.IRootService;
 import com.rj.bd.user.entity.User;
 
-
+//c层
 @Controller
 @RequestMapping("/root")
 public class RootController{
 
 	@Autowired
 	public IRootService rootService;
+	
+	
 	private Map<String, Object> data;
-	private File upload;
 
 	
 
@@ -210,22 +211,12 @@ public class RootController{
         input.close();
         Map<String, Object> map=new HashMap<String, Object>();
 	     map.put("code", 200);
-		 map.put("msg", "上传成功");
+		 map.put("msg", "下载成功");
 	     return map;
     }
 	
 	
-	
 
-
-
-
-	
-	
-	
-	
-	
-	
 	
 	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {
 		data.put("code", code);

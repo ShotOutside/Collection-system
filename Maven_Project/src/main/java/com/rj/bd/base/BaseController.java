@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author LGZ
  * @time   2019-05-09
  */
+@Controller
 public class BaseController {
 	 /** 基于@ExceptionHandler异常处理 */
     @ExceptionHandler

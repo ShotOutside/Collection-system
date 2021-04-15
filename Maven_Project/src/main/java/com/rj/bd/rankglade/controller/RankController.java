@@ -39,8 +39,7 @@ public class RankController extends BaseController{
 		
 		return list;
 		
-		
-		
+
 		
 	}
 	

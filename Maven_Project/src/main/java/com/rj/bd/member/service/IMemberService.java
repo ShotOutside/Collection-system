@@ -18,6 +18,8 @@ public interface IMemberService {
 	public void delete(String m_id);
 	
 	public void update(Member member);
+
+	List<Map<String, Object>> find();
 	
 	
 	

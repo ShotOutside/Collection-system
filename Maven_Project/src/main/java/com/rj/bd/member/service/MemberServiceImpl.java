@@ -39,6 +39,10 @@ public class MemberServiceImpl implements IMemberService {
 		memberMapper.update(member);
 	}
 
+	public List<Map<String, Object>> find() {
+		return memberMapper.find();
+	}
+
 
 
 }

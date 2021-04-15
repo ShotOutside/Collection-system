@@ -29,6 +29,9 @@ public interface MemberMapper {
 	@Select ("SELECT * FROM member,rankglade WHERE member.g_id=rankglade.g_id")
 	public List<Map<String, Object>> findAll();
 	
+	@Select("select * from member ")
+	public List<Map<String, Object>> find();
+	
 	
 	//条件查询(姓名)
 	@Select("SELECT * FROM member,rankglade WHERE member.g_id=rankglade.g_id AND member.m_name = #{m_name}")

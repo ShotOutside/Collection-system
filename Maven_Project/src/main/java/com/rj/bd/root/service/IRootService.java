@@ -11,4 +11,8 @@ public interface IRootService {
 
 	List<Root> findAll();
 
+	void saveImg(Root root);
+
+
+
 }

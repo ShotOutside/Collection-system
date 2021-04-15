@@ -13,6 +13,7 @@ public class Root {
 	public String r_sex;
 	public String r_age;
 	public String r_remark;
+	public String r_img;
 	
 	
 }

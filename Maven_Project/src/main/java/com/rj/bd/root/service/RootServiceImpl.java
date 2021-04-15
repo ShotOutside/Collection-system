@@ -24,4 +24,11 @@ public class RootServiceImpl implements IRootService {
 		return rootMapper.findAll();
 	}
 
+	public void saveImg(Root root) {
+
+		rootMapper.saveImg(root);
+	}
+
+
+
 }

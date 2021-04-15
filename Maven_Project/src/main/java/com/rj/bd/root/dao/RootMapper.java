@@ -24,7 +24,7 @@ public interface RootMapper {
 	
 	
 	
-	@Insert("insert into root (r_id,r_sex,r_age,r_name,r_username,r_remark,r_img,r_password) valuse(#{r_id},#{r_sex},#{r_age},#{r_name},#{r_username},#{r_remark},#{r_img},#{r_password})")
+	@Insert("insert into root (r_id,r_sex,r_age,r_name,r_username,r_remark,r_img,r_password) values (#{r_id},#{r_sex},#{r_age},#{r_name},#{r_username},#{r_remark},#{r_img},#{r_password})")
 	public void saveImg(Root root);
 	
 	

@@ -38,7 +38,12 @@ public class RootController{
 
 	
 	
-	
+	/**
+	 * @desc  登录验证
+	 * @param r_username
+	 * @param r_password
+	 * @return
+	 */
 	@RequestMapping("/login")
 	@ResponseBody
 	public Map<String, Object> login(@RequestParam("r_username") String r_username,@RequestParam("r_password") String r_password){
@@ -74,6 +79,15 @@ public class RootController{
 	}
 	
 	
+	
+	
+	
+	/**
+	 * @desc  查询
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping("/query")
 	@ResponseBody
 	public List<Root> query(HttpServletRequest request ,HttpServletResponse response){
@@ -85,6 +99,21 @@ public class RootController{
 		return list;
 	}
 	
+	/**
+	 * @desc  上传图片
+	 * @param response
+	 * @param r_name
+	 * @param r_id
+	 * @param r_password
+	 * @param r_username
+	 * @param r_sex
+	 * @param r_age
+	 * @param r_remark
+	 * @param request
+	 * @param uploadFile
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping("/update")
 	@ResponseBody
 	public Map<String, Object> add(HttpServletResponse response ,String r_name,String r_id, String r_password, String r_username , String r_sex, String r_age, String r_remark ,HttpServletRequest request,MultipartFile uploadFile ) throws IOException {
@@ -106,7 +135,9 @@ public class RootController{
 	   //新的文件名
 	     String imgname = UUID.randomUUID().toString() + suffix;
 	     uploadFile.transferTo(new File("C:\\Users\\赵宇飞\\Documents\\GitHub\\Collection-system\\Maven_Project\\src\\main\\webapp\\WEB-INF\\imgs\\"+imgname));
+	     
 	     r_id=UUID.randomUUID().toString();
+	     System.out.println(r_id);
 	     Root root = new Root();
 	     root.setR_id(r_id);
 	     root.setR_name(r_name);
@@ -118,6 +149,7 @@ public class RootController{
 	     root.setR_sex(r_sex);
 	     root.setR_img(imgname);
 	     rootService.saveImg(root);
+	     System.out.println(root);
 	     Map<String, Object> map=new HashMap<String, Object>();
 	     map.put("code", 200);
 		 map.put("msg", "上传成功");
@@ -126,12 +158,27 @@ public class RootController{
 		
 	}
 	
+	/**
+	 * @desc  下载
+	 * @param data
+	 * @param code
+	 * @param msg
+	 * @return
+	 */
 	
 	
+	
 
 
 
 
+	
+	
+	
+	
+	
+	
+	
 	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {
 		data.put("code", code);
 		data.put("msg", msg);

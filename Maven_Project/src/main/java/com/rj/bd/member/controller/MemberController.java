@@ -174,7 +174,12 @@ public class MemberController extends BaseController{
 		
 	}
 	
-	
+	/**
+	 * @desc  导出excel
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/exportExcel")
 	@ResponseBody
 	public void exportExcel(HttpServletRequest request ,HttpServletResponse response) throws IOException{

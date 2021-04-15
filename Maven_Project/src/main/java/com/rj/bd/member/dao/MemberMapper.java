@@ -25,10 +25,11 @@ public interface MemberMapper {
 	
 	  
 	
-	//查询
+	//多表查询
 	@Select ("SELECT * FROM member,rankglade WHERE member.g_id=rankglade.g_id")
 	public List<Map<String, Object>> findAll();
 	
+	//查询全部
 	@Select("select * from member ")
 	public List<Map<String, Object>> find();
 	

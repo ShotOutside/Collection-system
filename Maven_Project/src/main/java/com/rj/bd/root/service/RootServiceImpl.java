@@ -29,6 +29,10 @@ public class RootServiceImpl implements IRootService {
 		rootMapper.saveImg(root);
 	}
 
+	public String queryByIdAvatar(String r_username) {
+		return rootMapper.queryByIdAvatar(r_username);
+	}
+
 
 
 }

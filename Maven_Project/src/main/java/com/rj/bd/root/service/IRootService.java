@@ -13,6 +13,8 @@ public interface IRootService {
 
 	void saveImg(Root root);
 
+	String queryByIdAvatar(String r_username);
+
 
 
 }

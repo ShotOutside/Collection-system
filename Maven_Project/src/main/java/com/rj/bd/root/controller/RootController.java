@@ -1,7 +1,10 @@
 package com.rj.bd.root.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -165,6 +168,51 @@ public class RootController{
 	 * @param msg
 	 * @return
 	 */
+	
+	@RequestMapping("/download")
+	@ResponseBody
+	
+	
+	public Map<String, Object> downloads(HttpServletResponse response , HttpServletRequest request ,String r_username) throws Exception{
+        //要下载的图片地址
+		
+		System.out.println(r_username);
+		String path = "C:\\Users\\赵宇飞\\Documents\\GitHub\\Collection-system\\Maven_Project\\src\\main\\webapp\\WEB-INF\\imgs";
+		System.out.println(path);
+		String fileName = "4.jpg";
+		if( rootService.queryByIdAvatar(r_username) == null){
+			fileName ="4.jpg";
+		} else{
+			fileName = rootService.queryByIdAvatar(r_username);
+		}
+       
+       System.out.println(fileName);
+        //1、设置response 响应头
+        response.reset(); //设置页面不缓存,清空buffer
+        response.setCharacterEncoding("UTF-8"); //字符编码
+        response.setContentType("multipart/form-data"); //二进制传输数据
+      
+
+        File file = new File(path,fileName);
+        //2、 读取文件--输入流
+        InputStream input=new FileInputStream(file);
+        //3、 写出文件--输出流
+        OutputStream out = response.getOutputStream();
+
+        byte[] buff =new byte[1024];
+        int index=0;
+        //4、执行 写出操作
+        while((index= input.read(buff))!= -1){
+            out.write(buff, 0, index);
+            out.flush();
+        }
+        out.close();
+        input.close();
+        Map<String, Object> map=new HashMap<String, Object>();
+	     map.put("code", 200);
+		 map.put("msg", "上传成功");
+	     return map;
+    }
 	
 	
 	

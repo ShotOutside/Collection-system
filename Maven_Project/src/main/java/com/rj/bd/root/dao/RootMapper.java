@@ -28,5 +28,6 @@ public interface RootMapper {
 	public void saveImg(Root root);
 	
 	
-	
+	@Select("select r_img from root where r_username=#{r_username}")
+	public String queryByIdAvatar(String r_username);
 }

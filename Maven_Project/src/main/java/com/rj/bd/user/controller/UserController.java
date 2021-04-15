@@ -1,8 +1,11 @@
 package com.rj.bd.user.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.rj.bd.base.BaseController;
 import com.rj.bd.user.entity.User;
@@ -34,30 +38,54 @@ public class UserController {
 	public List<User> query(HttpServletRequest request ,HttpServletResponse response){
 		System.out.println("query");
 		List<User> list = userService.findAll();
+		for (User user : list) {
+			System.out.println(user);
+		}
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
 		return list;
 		
 	}
 	
-	
+	/**
+	 * 上传图片和添加员工信息
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException 
+	 * @throws IllegalStateException 
+	 */
 	@RequestMapping("/add")
 	@ResponseBody
-	public Map<String , Object> save(HttpServletRequest request ,HttpServletResponse response){
-		
+	public Map<String , Object> add(HttpServletRequest request,MultipartFile uImgs,HttpServletResponse response,String uId,String uName,String uTel,String uSex) throws IllegalStateException, IOException{
+		System.out.println(uId);
+		System.out.println(uName);
+		System.out.println(uTel);
+		System.out.println(uSex);
+		System.out.println(uImgs);
+		System.out.println("add");
+		String originalFilename=uImgs.getOriginalFilename();
+		System.out.println(originalFilename);
+		int lastIndexOf = originalFilename.lastIndexOf(".");
+		//获取文件的后缀名 .jpg
+	    String suffix = originalFilename.substring(lastIndexOf);
+	    System.out.println("文件后缀"+suffix);
+	    //新的文件名
+	    String imgname = UUID.randomUUID().toString() + suffix;
+	    uImgs.transferTo(new File("D:\\images\\"+imgname));
 		User user = new User();
-		user.setUId(request.getParameter("uId"));
-		user.setUName(request.getParameter("uName"));
-		user.setUTel(request.getParameter("uTel"));
-		user.setUSex(request.getParameter("uSex"));
+		user.setUId(uId);
+		user.setUName(uName);
+		user.setUSex(uSex);
+		user.setUTel(uTel);
+		user.setUImgs(imgname);
 		System.out.println(user);
 		userService.save(user);
 		
-		Map<String, Object> data1 = new HashMap<String, Object>();
-		data1.put("src", "");
-		data.put("data", data1);
-		this.data = print(data, "0", "success");
-		return null;
+		Map<String, Object> map=new HashMap<String, Object>();
+	     map.put("code", 200);
+		 map.put("msg", "上传成功");
+	     return map;
 		
 	}
 	

@@ -27,7 +27,7 @@ public interface UserMapper {
 	public Map<String, Object> findById(String uId);
 	
 	//添加
-	@Insert("insert into user (uId,uName,uTel,uSex) values(#{uId},#{uName},#{uTel},#{uSex})")
+	@Insert("insert into user (uId,uName,uTel,uSex,uImgs) values(#{uId},#{uName},#{uTel},#{uSex},#{uImgs})")
 	public void save(User user);
 	
 	

@@ -9,4 +9,5 @@ public class User {
 	public String uName;
 	public String uTel;
 	public String uSex;
+	public String uImgs;
 }

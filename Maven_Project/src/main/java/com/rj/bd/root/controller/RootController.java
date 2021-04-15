@@ -137,7 +137,7 @@ public class RootController{
 	     
 	   //新的文件名
 	     String imgname = UUID.randomUUID().toString() + suffix;
-	     uploadFile.transferTo(new File("C:\\Users\\赵宇飞\\Documents\\GitHub\\Collection-system\\Maven_Project\\src\\main\\webapp\\WEB-INF\\imgs\\"+imgname));
+	     uploadFile.transferTo(new File("D:\\images\\"+imgname));
 	     
 	     r_id=UUID.randomUUID().toString();
 	     System.out.println(r_id);
@@ -177,7 +177,7 @@ public class RootController{
         //要下载的图片地址
 		
 		System.out.println(r_username);
-		String path = "C:\\Users\\赵宇飞\\Documents\\GitHub\\Collection-system\\Maven_Project\\src\\main\\webapp\\WEB-INF\\imgs";
+		String path = "D:\\images";
 		System.out.println(path);
 		String fileName = "4.jpg";
 		if( rootService.queryByIdAvatar(r_username) == null){

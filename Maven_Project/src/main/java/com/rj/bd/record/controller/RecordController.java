@@ -208,18 +208,7 @@ public class RecordController{
 		map.put("msg", "请求成功");
 		map.put("data", pageInfo);
 		return map;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 	
 	

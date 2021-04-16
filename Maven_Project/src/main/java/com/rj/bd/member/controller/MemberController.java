@@ -224,6 +224,27 @@ public class MemberController extends BaseController{
 //		return data;
 	}
 	
+	
+	/**
+	 * 饼状图（会员情况）
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/echartsb")
+	public List<Map<String, Object>> echartsb(HttpServletRequest request ,HttpServletResponse response){
+		System.out.println("echartsb");
+		List<Map<String, Object>> list=memberService.queryEchartsb();
+		for (Map<String, Object> map : list) {
+			System.out.println(map);
+		}
+		
+		
+		return list;
+		
+	}
+	
 
 
 	private Map<String, Object> print(Map<String, Object> data, String code, String msg) {

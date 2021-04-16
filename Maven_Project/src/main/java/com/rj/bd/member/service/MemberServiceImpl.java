@@ -43,6 +43,10 @@ public class MemberServiceImpl implements IMemberService {
 		return memberMapper.find();
 	}
 
+	public List<Map<String, Object>> queryEchartsb() {
+		return memberMapper.queryEchartsb();
+	}
+
 
 
 }

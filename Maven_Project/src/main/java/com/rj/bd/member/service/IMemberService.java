@@ -21,6 +21,8 @@ public interface IMemberService {
 
 	List<Map<String, Object>> find();
 	
+	List<Map<String, Object>> queryEchartsb();
+	
 	
 	
 	

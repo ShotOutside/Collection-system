@@ -55,4 +55,8 @@ public interface MemberMapper {
 	//删除
 	@Delete("delete from member where m_id=#{m_id}")
 	public void delete(String m_id);
+	
+	//查询（会员种类和数量）
+	@Select("SELECT  g_name,(COUNT(m_name)) AS m_name FROM member,rankglade WHERE member.g_id=rankglade.g_id GROUP BY g_name")
+	public List<Map<String, Object>> queryEchartsb();
 }

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.rj.bd.base.BaseController;
 import com.rj.bd.user.entity.User;
 import com.rj.bd.user.service.IUserService;
 
@@ -36,6 +35,13 @@ public class UserController {
 	private String uTel;
 	private String uSex;
 	
+	
+	/**
+	 * @desc  查询全部
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping("/query")
 	@ResponseBody
 	public List<User> query(HttpServletRequest request ,HttpServletResponse response){
@@ -92,6 +98,15 @@ public class UserController {
 		
 	}
 	
+	
+	/**
+	 * @desc  下载图片
+	 * @param response
+	 * @param request
+	 * @param uId
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping("/download")
 	@ResponseBody
     public Map<String, Object> downloads(HttpServletResponse response , HttpServletRequest request ,String uId) throws Exception{
@@ -134,7 +149,11 @@ public class UserController {
 	     return map;
     }
 	
-	
+	/**
+	 * @desc  删除
+	 * @param uId
+	 * @return
+	 */
 	@RequestMapping("/delete")
 	@ResponseBody
 	public Map<String, Object> delete(String uId){
@@ -160,7 +179,12 @@ public class UserController {
 		this.data = print(data, "0", "success");
 		return map;
 	}
-	
+	/**
+	 * @desc  删除
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/update")
 	public Map<String, Object> update(HttpServletRequest request ,HttpServletResponse response){

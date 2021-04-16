@@ -15,7 +15,7 @@
 	<mapper class="com.rj.bd.user.dao.UserMapper"/>
 	<mapper class="com.rj.bd.root.dao.RootMapper"/>
 	<mapper class="com.rj.bd.record.dao.RecordMapper"/>
-
+	<mapper class="com.rj.bd.way.dao.WayMapper"/>
 </mappers>
 
 	

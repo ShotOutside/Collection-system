@@ -17,7 +17,8 @@ public class RecordImpl implements IRecordService {
 	@Autowired
 	public RecordMapper recordMapper;
 
-	public List<Map<String, Object>> findAll(User user) {
+	public List<Map<String, Object>> findAll(User user,Integer page,Integer size) {
+		PageHelper.startPage(page, size);
 		return recordMapper.findAll(user);
 	}
 

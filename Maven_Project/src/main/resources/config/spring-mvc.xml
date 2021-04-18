@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans" 
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	   xmlns:p="http://www.springframework.org/schema/p" 
-	   xmlns:mvc="http://www.springframework.org/schema/mvc" 
-	   xmlns:context="http://www.springframework.org/schema/context" 
-	   xsi:schemaLocation="  
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="  
     http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
     http://www.springframework.org/schema/context  
     http://www.springframework.org/schema/context/spring-context-3.0.xsd  
     http://www.springframework.org/schema/mvc  
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-	
-	
+
+
 	<!-- 开启注解 -->
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven />
 	<!-- 扫描包 -->
 	<context:component-scan base-package="com.rj.bd">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>	 
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
-	<!-- 定义跳转的文件的前后缀 ，视图模式配置-->
+	
+
+
+	
+
+	
+
+
+	<!--配置文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="maxUploadSize" value="500000" />
+	</bean>
+
+
+
+
+	<!-- 3.定义跳转的文件的前后缀 ，视图模式配置-->
 	<bean id="viewResolver"   class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
 		<property name="prefix" value="/WEB-INF/way/" />
-		<property name="suffix" value=".ftl" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
 	</bean>
 	
-	<!-- 注册freemarker配置类 -->
+	
+	<!-- 4.注册freemarker配置类 -->
 	<bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<!-- ftl模版文件路径  -->
 		<property name="templateLoaderPath" value="/WEB-INF/way/"></property>
@@ -49,7 +69,7 @@
 	</bean>
 	
 	
-	<!-- 注册freemarker视图解析器 -->
+	<!-- 5.注册freemarker视图解析器 -->
 	<bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<!-- 视图解析顺序，排在其他视图解析器之后 数字越大优先级越低
 		     ps:但是吧我不建议使用视图解析器的优先级，因为这个优先级不是绝对的
@@ -76,18 +96,9 @@
     <!-- 添加session attributes属性到ModelAndView中 -->
 		<property name="exposeSessionAttributes" value="true" />
 	</bean>
-	
-
-	
-	<!--配置文件上传解析器-->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="defaultEncoding" value="UTF-8"/>
-        <property name="maxUploadSize" value="500000"/>
-    </bean>
 
 
-	
-	
-	
-	
+
+
+
 </beans>

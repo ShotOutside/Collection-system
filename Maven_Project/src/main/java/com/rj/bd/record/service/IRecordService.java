@@ -8,7 +8,7 @@ import com.rj.bd.user.entity.User;
 
 public interface IRecordService {
 
-	List<Map<String, Object>> findAll(User user);
+	List<Map<String, Object>> findAll(User user, Integer page, Integer size);
 
 	List<Map<String, Object>> find();
 

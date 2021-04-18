@@ -9,6 +9,6 @@
 <body>
 			<a href="<%=request.getContextPath()%>/member/query.action">测试json</a>
 			<a href="<%=request.getContextPath()%>/record/add.action">点击</a>
-			<a  href="<%=request.getContextPath()%>/way/query11.action">freemark</a>
+			<a  href="<%=request.getContextPath()%>/way/query11">freemark</a>
 			
 </html>

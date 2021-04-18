@@ -49,18 +49,22 @@ public class RecordController{
 	
 	@RequestMapping("/queryByName")
 	@ResponseBody
-	public List<Map<String, Object>> queryByName(HttpServletRequest request,HttpServletResponse response){
+	public PageInfo queryByName(HttpServletRequest request,HttpServletResponse response,Integer page,Integer size){
 		System.out.println("query");
 		User user = new User();
 		user.setUName(request.getParameter("uName"));
+		System.out.println(page);
+		System.out.println(size);
 		System.out.println(user.getUName());
-		List<Map<String, Object>> list = recordService.findAll(user);
+		List<Map<String, Object>> list = recordService.findAll(user,page,size);
+		
+		PageInfo pageInfo = new PageInfo(list);
 		
 		System.out.println(list);
 		
 		data = new HashMap<String, Object>();
 		this.data = print(data, "0", "success");
-		return list;
+		return pageInfo;
 	}
 	
 	
